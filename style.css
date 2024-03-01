@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(132, 59, 117);
+    background-image: url('fondo_bamx.jpg'); /* Agrega 'url()' para especificar la ruta de la imagen */
+    background-size: cover; /* Puedes ajustar esto según tus necesidades, como 'contain' o valores específicos en píxeles */
+    background-repeat: no-repeat; /* Esto evita que la imagen de fondo se repita */
+    
+}
+
+.container {
+    text-align: center;
+}
+
+body, .texts {
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 25px;
+}
+
+
+.inputs {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+    box-sizing: border-box;
+}
+
+
+.buttons {
+    background-color: rgb(229, 155, 64);
+    color: white;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.buttons:hover {
+    background-color: rgb(204, 126, 50);
+}
+
+.buttons {
+    display: inline-block;
+    text-align: center;
+    line-height: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 15px;
+  }
+  
+
+  th {
+    background-color: #ee940e; 
+    padding: 10px;
+    text-align: left;
+  }
+  
+
+  td {
+    border: 1px solid #FFD699;
+    padding: 10px;
+  }
+
+  h1 {
+    font-family: 'Impact', sans-serif;
+    font-size: 1.5em;
+    color: #e8a64a;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAMX</title>
+    <script>
+        function actualizarFecha() {
+            var fecha = new Date();
+            var opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'};
+            var fechaFormateada = fecha.toLocaleDateString('es-ES', opciones);
+            document.getElementById('fechaActual').textContent = fechaFormateada;
+        }
+    
+        setInterval(actualizarFecha, 1000);
+    
+        actualizarFecha();
+    </script>
+</head>
+<body>
+<center>
+    <h1 class="h1">
+        Inventario: registro de alimentos
+    </h1>
+    <br>
+    <h2 class="texts" id="fechaActual"></h2>
+<img src="logo.png" alt="">
+<br>
+<br>
+<br>
+<button class="buttons" id= "iragregar"> Agregar producto </button>
+<br>
+<br>
+<br>
+<button class="buttons" id= "irinventario">Previsualizar inventario</button>
+</center>
+
+<script src="iragregar.js"></script>
+<script src="irinventario.js"></script>
+<script src="ircantidad.js"></script>
+</body>
+</html>

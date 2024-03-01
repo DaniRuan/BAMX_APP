@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario</title>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var addButton = document.querySelector('.buttons');
+          addButton.addEventListener('click', function() {
+            window.location.replace("inventary.html");
+          });
+        });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var inventarioButton = document.getElementById('inventariocompleto');
+  
+    inventarioButton.addEventListener('click', function() {
+      var excelURL = 'https://docs.google.com/spreadsheets/d/162I1H1AwDWU7PmMY-8TOyla3Fcldq9MIgA3ntDwCFig/edit#gid=0';
+      window.open(excelURL, '_blank');
+    });
+  });
+  </script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+ <script>
+  var excelURL = 'https://docs.google.com/spreadsheets/d/162I1H1AwDWU7PmMY-8TOyla3Fcldq9MIgA3ntDwCFig/edit#gid=0';
+
+  cargarYPrevisualizarExcel(excelURL);
+
+  function cargarYPrevisualizarExcel(url) {
+    fetch(url)
+        .then(response => response.arrayBuffer())
+        .then(data => {
+            var workbook = XLSX.read(data, { type: 'array' });
+            var sheetName = workbook.SheetNames[0];
+            var sheet = workbook.Sheets[sheetName];
+
+            var jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+
+            var filas3a11Columnas2alFinal = jsonData.slice(2, 12).map(row => {
+                return row.slice(1).filter((_, index) => index !== 4);
+            });
+
+            var encabezados = jsonData[1].slice(1).filter((_, index) => index !== 4);
+
+            var tablaHTML = '<table>';
+            tablaHTML += '<tr>';
+
+            encabezados.forEach(function(columna) {
+                tablaHTML += '<th>' + columna + '</th>';
+            });
+
+            tablaHTML += '</tr>';
+
+            filas3a11Columnas2alFinal.forEach(function(fila) {
+                tablaHTML += '<tr>';
+                fila.forEach(function(celda) {
+                    tablaHTML += '<td>' + celda + '</td>';
+                });
+                tablaHTML += '</tr>';
+            });
+
+            tablaHTML += '</table>';
+
+            document.getElementById('excelPreview').innerHTML = tablaHTML;
+        })
+        .catch(error => console.error('Error al cargar el archivo Excel', error));
+}
+
+</script>
+</head>
+<body>
+<center>
+
+    <h1 class="h1"> Inventario actual </h1>
+    <h3 class="texts"> (Previsualización)</h3>
+<br>
+<br>
+<div id="excelPreview"></div>
+  <h3>(. . . .)</h3>
+<button class="buttons" id= "regresar">Regresar</button>
+<br>
+<br>
+<button class="buttons" id="inventariocompleto">Ver inventario completo</button>
+
+</center>
+</body>
+</html>
+
+<script

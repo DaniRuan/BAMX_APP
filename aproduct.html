@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de producto</title>
+</head>
+<body>
+	<div class="container">
+		<form method="post" action="" name="contact-form">    
+  <br>
+   <h1 class="h1"> Registro de producto </h1>
+  <br> 
+<label class="texts">Selecciona una categoría:</label>
+<select id="categoria" name="Categoria" required>
+  <option value=" "></option>  
+  <option value="abarrotes">abarrotes</option>
+  <option value="verduras/fruta">verduras/fruta</option>
+  <option value="otro">otro</option>
+</select>
+    <br>
+    <br>
+    <label class="texts"> Nombre del producto: </label> <input type="text" class="inputs2" placeholder="Ingresa nombre" name="Producto" id="productoInput" required>
+    <br>
+    <br>
+    <label class="texts"> Peso total (ingresar sólo el digito en kg): </label><input type="text" class="inputs2" placeholder="Kg" name="Peso total (kg)" id="cantidadInput" required>    
+    <br>
+    <br>
+    <label class= "texts"> Peso por unidad (ingresar sólo el dígito en g): </label><input type="text" class="inputs2" placeholder="g" name="Peso por unidad (g)" id="cantidad2Input" required>
+    <br>
+    <br>
+    <label class="texts"> Fecha de caducidad: </label><input type="date" class="inputs2" name="Fecha">
+    <br>
+    <br>
+    <label class="texts">En caso de no tener fecha, ingresa prioridad de caducidad (1 = mayor prioridad):</label>
+    <select id="categoria_prioridad" name="Prioridad">
+      <option value=" "></option>  
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <br>
+    <br>
+    <label class="texts"> Lugar de almacenamiento específico: </label><input type="text" class="inputs2" placeholder="ej. Anaquel 1" name="Almacenamiento" id="almacenamientoInput" required>
+    <br>
+    <br>
+    <input type="submit" class="buttons" value="Agregar" id="agregarbutton">
+    <br>
+    <br>
+    <div id="savingMessage" style="color: green; font-size:large; display: none;">Guardando datos....</div>
+    <br>
+
+  </form>
+</div>    
+</body>
+</html>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzzHBLAT8dXzkX2zTW-JWg4EKSWyPD3qjz2DBvVra8du39SKHRAQT-JMyWVTDOgaX0T/exec'
+  const form = document.forms['contact-form']
+  const addButton = document.getElementById('agregarbutton');
+  const savingMessage = document.getElementById('savingMessage');
+  
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    addButton.disabled = true;
+    savingMessage.style.display = 'block';
+
+    const productoInput = document.getElementById('productoInput');
+    const cantidadInput = document.getElementById('cantidadInput');
+    const cantidad2Input = document.getElementById('cantidad2Input');
+    const almacenamientoInput = document.getElementById('almacenamientoInput');
+
+    productoInput.value = productoInput.value.toLowerCase().replace(/\s/g, '');
+    cantidadInput.value = cantidadInput.value.toLowerCase().replace(/\s/g, '');
+    cantidad2Input.value = cantidad2Input.value.toLowerCase().replace(/\s/g, '');
+    almacenamientoInput.value = almacenamientoInput.value.toLowerCase().replace(/\s/g, '');
+
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+        alert("Producto registrado!");
+        addButton.disabled = false;
+        savingMessage.style.display = 'none';
+      })
+      .then(() => { window.location.replace("inventary.html"); })
+      .catch(error => {
+        console.error('Error al subir datos', error.message);
+        addButton.disabled = false;
+        savingMessage.style.display = 'none';
+      });
+  });
+</script>
+
+<!--  
+  https://script.google.com/macros/s/AKfycbzzHBLAT8dXzkX2zTW-JWg4EKSWyPD3qjz2DBvVra8du39SKHRAQT-JMyWVTDOgaX0T/exec
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var addButton = document.querySelector('.buttons');
+        addButton.addEventListener('click', function() {
+          var categoria = document.getElementById('categoria').value;
+          var nombreProducto = document.querySelector('.inputs2[placeholder="Ingresa nombre"]').value;
+          var cantidad = document.querySelector('.inputs2[placeholder="Kg"]').value;
+          var lugarAlmacenamiento = document.querySelector('.inputs2[placeholder="ej. Anaquel 1"]').value;
+  
+          if (categoria === 'select' || nombreProducto === '' || cantidad === '' || lugarAlmacenamiento === '') {
+           alert("Ingresa todos los datos requeridos");
+          } else {
+          alert("Producto Agregado!");
+          window.location.replace("inventary.html");
+            // Aquí puedes agregar la lógica para guardar los datos o realizar cualquier acción adicional
+            // guardar en base de datos
+          }
+        });
+      });
+  </script>
+-->
