@@ -23,15 +23,12 @@ body, .texts {
 }
 
 
-.inputs {
-    width: 100%;
+.inputs2 {
     padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: none;
+    border: 3px solid rgb(204, 126, 50);
+    border-radius: 20px;
     box-sizing: border-box;
 }
-
 
 .buttons {
     background-color: rgb(229, 155, 64);
@@ -52,6 +49,7 @@ body, .texts {
     display: inline-block;
     text-align: center;
     line-height: 30px;
+    margin-right: 20px;
 }
 
 table {
@@ -83,3 +81,48 @@ table {
     letter-spacing: 4px;
     margin-bottom: 20px;
 }
+
+/* Agrega este código al encabezado de tu archivo CSS o en tu etiqueta de estilo en el HTML */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #e8a64a;
+    margin: 10% auto;
+    padding: 60px;
+    border-radius: 20px;
+    border: 6px solid #FFFFFF;
+    width: 30%;
+}
+
+/* Estilo para esconder el formulario y mostrarlo solo cuando está activo */
+#modal.active {
+    display: block;
+}
+
+.btn {
+    padding: 10px 150px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background-color: #45a049;
+  }
+  
+  .btn:active {
+    background-color: #3e8e41;
+  }
