@@ -16,48 +16,45 @@
             <br><br>
             <input type="password" style="padding: 5px; border-radius: 20px; width: 360px;" id="password" required>
             <br><br>
-            <button type="button" class="btn"onclick="authenticate()">Acceder</button>
-            <p id="errorMessage" style="color: red;"></p>
+            <button type="button" class="btn" onclick="authenticate()">Acceder</button>
+            <p id="errorMessage" style="color: red; font-size: 18px;"></p>
         </form>
         </center>
     </div>
 </div>
 
-<!-- Agrega este código al final de tu cuerpo HTML para cargar el script -->
 <script>
-    
-    // Agrega este código a tu archivo script.js o dentro de la etiqueta <script> en tu HTML
 const modal = document.getElementById('modal');
 const loginForm = document.getElementById('loginForm');
 const errorMessage = document.getElementById('errorMessage');
+const passwordInput = document.getElementById('password');
 
-// Abre la ventana modal
 function openModal() {
     modal.classList.add('active');
 }
 
-// Cierra la ventana modal
-function closeModal() {
-    modal.classList.remove('active');
-}
-
-// Función de autenticación
 function authenticate() {
-    const passwordInput = document.getElementById('password');
     const password = passwordInput.value;
 
-    // Verifica la contraseña (cambia 'admin' según tu contraseña deseada)
     if (password === 'bamx24') {
-        //closeModal(); // Cierra la ventana modal al autenticar
         window.location.replace("inventary.html");
-        // Aquí puedes redirigir a otras ventanas o realizar otras acciones después de la autenticación
+        errorMessage.textContent = '';
     } else {
         errorMessage.textContent = 'Contraseña incorrecta';
+        passwordInput.value = '';
     }
 }
-// Agrega esta línea al final de tu archivo script.js
-openModal();
 
+function handleEnterKey(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        authenticate();
+    }
+}
+
+passwordInput.addEventListener('keydown', handleEnterKey);
+
+openModal();
 </script>
 
 </body>
