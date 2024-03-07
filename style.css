@@ -6,10 +6,16 @@ body {
     align-items: center;
     height: 100vh;
     background-color: rgb(132, 59, 117);
-    background-image: url('fondo_bamx.jpg'); /* Agrega 'url()' para especificar la ruta de la imagen */
-    background-size: cover; /* Puedes ajustar esto según tus necesidades, como 'contain' o valores específicos en píxeles */
-    background-repeat: no-repeat; /* Esto evita que la imagen de fondo se repita */
+    background-image: url('fondo_bamx.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
     
+}
+
+@media (max-width: 600px) {
+    body {
+        background-size: 100% 100%;
+    }
 }
 
 .container {
@@ -82,7 +88,6 @@ table {
     margin-bottom: 20px;
 }
 
-/* Agrega este código al encabezado de tu archivo CSS o en tu etiqueta de estilo en el HTML */
 .modal {
     display: none;
     position: fixed;
@@ -104,19 +109,19 @@ table {
     width: 30%;
 }
 
-/* Estilo para esconder el formulario y mostrarlo solo cuando está activo */
 #modal.active {
     display: block;
 }
 
 .btn {
-    padding: 10px 150px;
+    padding: 10px;
     background-color: #4CAF50;
     color: white;
-    font-size: 20px;
+    font-size: 80%;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 100%;
   }
   
   .btn:hover {

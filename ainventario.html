@@ -40,7 +40,7 @@
 
             var jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
 
-            var filas3a11Columnas2alFinal = jsonData.slice(2, 12).map(row => {
+            var filas3a11Columnas2alFinal = jsonData.slice(2, 10).map(row => {
                 return row.slice(1).filter((_, index) => index !== 4);
             });
 
@@ -74,11 +74,10 @@
 </head>
 <body>
 <center>
-
+<br>
+<br>
     <h1 class="h1"> Inventario actual </h1>
     <h3 class="texts"> (Previsualización)</h3>
-<br>
-<br>
 <div id="excelPreview"></div>
   <h3>(. . . .)</h3>
 <button class="buttons" id= "regresar">Regresar</button>
